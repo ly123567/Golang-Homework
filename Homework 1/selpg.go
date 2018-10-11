@@ -39,17 +39,17 @@ func init() {
 }
 
 func check() {
-	if param.help || param.start == -1 || param.end == -1 || param.start > param.end {
+	if param.help || param.start < 1 || param.end < 1 || param.start > param.end {
 		flag.Usage()
 	}
 
-	if param.start == -1 {
-		fmt.Fprintf(os.Stderr, "\nMissing necessary argument: -s\n")
+	if param.start < 1 {
+		fmt.Fprintf(os.Stderr, "\nMissing necessary argument or invalid value: -s\n")
 		os.Exit(1)
 	}
 
-	if param.end == -1 {
-		fmt.Fprintf(os.Stderr, "\nMissing necessary argument: -e\n")
+	if param.end < 1 {
+		fmt.Fprintf(os.Stderr, "\nMissing necessary argument or invalid value: -e\n")
 		os.Exit(1)
 	}
 
